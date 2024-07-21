@@ -9,10 +9,12 @@ export default function userprofile() {
   const [lastName, setLastName] = useState("");
   useEffect(() => {
     let tmp = Cookies.get("loginInfo");
-    tmp = JSON.parse(tmp);
-    setFirstName(tmp.first_name ?? "");
-    setLastName(tmp.last_name ?? "");
-    setEmail(tmp.email ?? "");
+    if (tmp) {
+      tmp = JSON.parse(tmp);
+      setFirstName(tmp.first_name ?? "");
+      setLastName(tmp.last_name ?? "");
+      setEmail(tmp.email ?? "");
+    }
   }, []);
 
   const updateProfile = () => {

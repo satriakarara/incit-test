@@ -7,9 +7,11 @@ export default function index() {
   const [email, setEmail] = useState("");
   useEffect(() => {
     let tmp = Cookies.get("loginInfo");
-    tmp = JSON.parse(tmp);
-    setEmail(tmp.email);
-    setIsActive(tmp.active);
+    if (tmp) {
+      tmp = JSON.parse(tmp);
+      setEmail(tmp.email);
+      setIsActive(tmp.active);
+    }
   }, []);
 
   const resendVerif = () => {

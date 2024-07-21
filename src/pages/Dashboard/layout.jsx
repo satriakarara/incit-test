@@ -11,11 +11,12 @@ export default function layout() {
   const [isActive, setIsActive] = useState(false);
   useEffect(() => {
     let tmp = Cookies.get("loginInfo");
-    tmp = JSON.parse(tmp);
-    setEmail(tmp.email);
-    setIsActive(tmp.active);
     if (!tmp) {
       navigate("/");
+    } else {
+      tmp = JSON.parse(tmp);
+      setEmail(tmp.email);
+      setIsActive(tmp.active);
     }
   }, []);
 
